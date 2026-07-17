@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abrar Shaikh | Embedded Software Engineer</title>
+    <meta name="description" content="Personal portfolio of Abrar Shaikh, Senior Embedded Software Engineer specializing in silicon bring-up and automotive firmware.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+    <!-- Full-Screen Semiconductor Canvas Background -->
+    <canvas id="background-canvas"></canvas>
+    <div class="grid-overlay"></div>
+    <div class="pcb-grid-fine"></div>
+
+    <!-- Pinned Side Panels (GitHub / LinkedIn / Email) -->
+    <div class="social-side-panel left">
+        <a href="https://github.com/AbrarShaikh" target="_blank" rel="noopener noreferrer" title="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/abrar-shaikh-m/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </a>
+        <a href="mailto:abraratjob@gmail.com" title="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        </a>
+        <div class="vertical-line"></div>
+    </div>
+    <div class="social-side-panel right">
+        <a href="mailto:abraratjob@gmail.com" class="vertical-text">abraratjob@gmail.com</a>
+        <div class="vertical-line"></div>
+    </div>
+
+    <!-- Status Bar -->
+    <div class="status-bar">
+        <div class="status-left">
+            <span class="pulse-led green"></span>
+            <span>SYSTEM STATUS: RUNNING (CORE_VERIFY_OK)</span>
+        </div>
+        <div class="status-right">
+        </div>
+    </div>
+
+    <!-- Sticky Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon-wrap">
+                    <svg class="logo-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--accent-gold);">
+                        <rect x="5" y="5" width="14" height="14" rx="2"></rect>
+                        <path d="M9 9h6v6H9z"></path>
+                        <path d="M9 1v4M15 1v4M9 19v4M15 19v4M20 9h3M20 15h3M1 9h3M1 15h3"></path>
+                    </svg>
+                </span>
+                <span>abrar.sh<span class="underscore-blink">_</span></span>
+            </a>
+            
+            <nav class="nav-links">
+                <a href="about.html"><span class="nav-num">1</span> ABOUT</a>
+                <a href="experience.html"><span class="nav-num">2</span> EXPERIENCE</a>
+                <a href="skills.html"><span class="nav-num">3</span> SKILLS</a>
+                <a href="projects.html"><span class="nav-num">4</span> PROJECTS</a>
+                <a href="publications.html"><span class="nav-num">5</span> PUBLICATIONS</a>
+                <a href="contact.html"><span class="nav-num">6</span> CONTACT</a>
+                <div class="nav-status">
+                    <span class="pulse-led green" style="width:6px; height:6px;"></span>
+                    <span style="font-weight:600; color: #ffffff;">ONLINE</span>
+                </div>
+                <span class="nav-clock" id="nav-clock">00:00:00 IST</span>
+            </nav>
+
+            <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer">
+        <nav class="mobile-nav-links">
+            <a href="about.html"><span class="nav-num">1</span> ABOUT</a>
+            <a href="experience.html"><span class="nav-num">2</span> EXPERIENCE</a>
+            <a href="skills.html"><span class="nav-num">3</span> SKILLS</a>
+            <a href="projects.html"><span class="nav-num">4</span> PROJECTS</a>
+            <a href="publications.html"><span class="nav-num">5</span> PUBLICATIONS</a>
+            <a href="contact.html"><span class="nav-num">6</span> CONTACT</a>
+        </nav>
+    </div>
+
+    <!-- Main Container -->
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero-layout" style="position:relative;">
+            <!-- Radial amber glow overlay -->
+            <div class="hero-amber-glow"></div>
+
+            <div class="hero-left">
+                <!-- Boot loader terminal text with blink cursor -->
+                <div class="boot-loader-line" id="boot-terminal-line">
+                    <!-- Terminal icon SVG -->
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-green)" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                    <span id="boot-text" style="color: var(--accent-green); font-family: var(--font-mono); font-size: 0.82rem;"></span><span class="blink" style="color:var(--accent-amber);">_</span>
+                </div>
+                <div class="location-tag" style="color: var(--accent-amber); letter-spacing: 4px;">// Mumbai, IN · 4.7+ years</div>
+                
+                <h1 class="profile-title-large">
+                    Abrar<br>
+                    <span class="gradient-text-amber">Shaikh.</span>
+                </h1>
+                
+                <p class="profile-subtext">
+                    Embedded Software Engineer. <span class="highlight-white">Silicon bring-up</span> @ ARM · <span class="highlight-green">Automotive firmware</span> @ BOSCH.
+                </p>
+
+                <div class="cta-group">
+                    <a href="experience.html" class="btn-solid-gold">
+                        VIEW WORK
+                        <!-- Arrow ↗ SVG -->
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                    </a>
+                    <a href="#" class="btn-outline-gold">
+                        RESUME
+                        <!-- Arrow ↴ SVG -->
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+                    </a>
+                    <div class="hero-socials">
+                        <a href="https://github.com/AbrarShaikh" target="_blank" rel="noopener noreferrer" title="GitHub">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/abrar-shaikh-m/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </a>
+                        <a href="mailto:abraratjob@gmail.com" title="Email">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Statistics Metrics row -->
+                <div class="metrics-row">
+                    <div class="metric-item">
+                        <span class="metric-num">78%</span>
+                        <span class="metric-label">Runtime Optimized</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-num">75%</span>
+                        <span class="metric-label">Compile Time Cut</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-num">8 KB</span>
+                        <span class="metric-label">Boot Code Saved</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-num">100+</span>
+                        <span class="metric-label">Test Hours Automated</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semiconductor SVG Chip Visual (Orbiting packets, radar sweep, animated bus) -->
+            <div class="hero-right" style="display: flex; flex-direction: column; align-items: center;" id="chip-container">
+                <div class="live-logs-container" id="live-logs-box">
+                    <!-- populated by app.js -->
+                </div>
+
+                <div class="chip-visualizer-container" id="chip-wrap-b" style="animation: floatChip 6s ease-in-out infinite;">
+                    <svg
+                        id="chip-svg-b"
+                        viewBox="0 0 380 380"
+                        width="380" height="380"
+                        style="filter: drop-shadow(0 0 40px rgba(255,176,32,0.32)); display:block;"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <defs>
+                            <radialGradient id="dieGlow" cx="50%" cy="50%">
+                                <stop offset="0%"   stop-color="#ffb020" stop-opacity="0.8"/>
+                                <stop offset="50%"  stop-color="#ffb020" stop-opacity="0.15"/>
+                                <stop offset="100%" stop-color="#ffb020" stop-opacity="0"/>
+                            </radialGradient>
+                            <linearGradient id="waveGrad" x1="0" x2="1">
+                                <stop offset="0%"   stop-color="#4ade80" stop-opacity="0"/>
+                                <stop offset="50%"  stop-color="#4ade80" stop-opacity="1"/>
+                                <stop offset="100%" stop-color="#4ade80" stop-opacity="0"/>
+                            </linearGradient>
+                        </defs>
+
+                        <!-- Outer radar sweep ring -->
+                        <g style="transform-origin:190px 190px; animation: spin 8s linear infinite;">
+                            <circle cx="190" cy="190" r="180" fill="none" stroke="rgba(255,176,32,0.15)" stroke-dasharray="2 6"/>
+                            <path d="M 190 190 L 370 190 A 180 180 0 0 1 317 317 Z" fill="url(#dieGlow)" opacity="0.35"/>
+                        </g>
+
+                        <!-- Concentric static rings -->
+                        <circle cx="190" cy="190" r="155" fill="none" stroke="rgba(255,176,32,0.10)"/>
+                        <circle cx="190" cy="190" r="130" fill="none" stroke="rgba(74,222,128,0.12)"/>
+
+                        <!-- Orbiting data packets (gold) -->
+                        <g style="transform-origin:190px 190px; animation: spin 6s linear infinite;">
+                            <circle cx="320" cy="190" r="4" fill="#ffb020"><animate attributeName="r" values="3;5;3" dur="1.2s" repeatCount="indefinite"/></circle>
+                            <circle cx="320" cy="190" r="10" fill="#ffb020" opacity="0.15"/>
+                        </g>
+                        <!-- Orbiting (green) -->
+                        <g style="transform-origin:190px 190px; animation: spin 8s linear infinite; animation-delay:-2.6s;">
+                            <circle cx="345" cy="190" r="4" fill="#4ade80"><animate attributeName="r" values="3;5;3" dur="1.4s" repeatCount="indefinite"/></circle>
+                        </g>
+                        <!-- Orbiting (cyan) -->
+                        <g style="transform-origin:190px 190px; animation: spin 10s linear infinite; animation-delay:-6.6s;">
+                            <circle cx="370" cy="190" r="4" fill="#22d3ee"><animate attributeName="r" values="3;5;3" dur="1.6s" repeatCount="indefinite"/></circle>
+                        </g>
+
+                        <!-- Chip body -->
+                        <rect x="105" y="105" width="170" height="170" fill="#0a0f18" stroke="#ffb020" stroke-width="2" rx="6">
+                            <animate attributeName="stroke-opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+                        </rect>
+
+                        <!-- Radial die glow inside -->
+                        <circle cx="190" cy="190" r="70" fill="url(#dieGlow)" opacity="0.6">
+                            <animate attributeName="opacity" values="0.3;0.7;0.3" dur="3s" repeatCount="indefinite"/>
+                        </circle>
+
+                        <!-- Internal die grid lines (vertical) -->
+                        <line x1="120" y1="120" x2="120" y2="255" stroke="rgba(255,176,32,0.15)" stroke-width="0.7"/>
+                        <line x1="139" y1="120" x2="139" y2="255" stroke="rgba(255,176,32,0.15)" stroke-width="0.7"/>
+                        <line x1="158" y1="120" x2="158" y2="255" stroke="rgba(255,176,32,0.15)" stroke-width="0.7"/>
+                        <line x1="105" y1="105" x2="105" y2="275" stroke="rgba(255,176,32,0.55)" stroke-width="1.4" id="chip-vscan">
+                            <animateTransform attributeName="transform" type="translate" values="0 0; 170 0; 0 0" dur="3.6s" repeatCount="indefinite" calcMode="spline" keyTimes="0; 0.5; 1" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
+                            <animate attributeName="stroke-opacity" values="0.1;0.8;0.1" dur="3.6s" repeatCount="indefinite"/>
+                        </line>
+                        <line x1="196" y1="120" x2="196" y2="255" stroke="rgba(255,176,32,0.15)" stroke-width="0.7"/>
+                        <line x1="215" y1="120" x2="215" y2="255" stroke="rgba(255,176,32,0.15)" stroke-width="0.7"/>
+                        <line x1="234" y1="120" x2="234" y2="255" stroke="rgba(255,176,32,0.15)" stroke-width="0.7"/>
+                        <line x1="253" y1="120" x2="253" y2="255" stroke="rgba(255,176,32,0.15)" stroke-width="0.7"/>
+                        <!-- Internal die grid lines (horizontal) -->
+                        <line x1="120" y1="120" x2="255" y2="120" stroke="rgba(74,222,128,0.12)" stroke-width="0.7"/>
+                        <line x1="120" y1="139" x2="255" y2="139" stroke="rgba(74,222,128,0.12)" stroke-width="0.7"/>
+                        <line x1="120" y1="158" x2="255" y2="158" stroke="rgba(74,222,128,0.12)" stroke-width="0.7"/>
+                        <line x1="105" y1="105" x2="275" y2="105" stroke="rgba(74,222,128,0.55)" stroke-width="1.4" id="chip-hscan">
+                            <animateTransform attributeName="transform" type="translate" values="0 0; 0 170; 0 0" dur="4.8s" repeatCount="indefinite" calcMode="spline" keyTimes="0; 0.5; 1" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
+                            <animate attributeName="stroke-opacity" values="0.1;0.8;0.1" dur="4.8s" repeatCount="indefinite"/>
+                        </line>
+                        <line x1="120" y1="196" x2="255" y2="196" stroke="rgba(74,222,128,0.12)" stroke-width="0.7"/>
+                        <line x1="120" y1="215" x2="255" y2="215" stroke="rgba(74,222,128,0.12)" stroke-width="0.7"/>
+                        <line x1="120" y1="234" x2="255" y2="234" stroke="rgba(74,222,128,0.12)" stroke-width="0.7"/>
+                        <line x1="120" y1="253" x2="255" y2="253" stroke="rgba(74,222,128,0.12)" stroke-width="0.7"/>
+
+                        <!-- Corner notch -->
+                        <circle cx="119" cy="119" r="4" fill="#0a0f18" stroke="#ffb020" stroke-width="1.5"/>
+
+                        <!-- Chip label (glitching via JS) -->
+                        <text x="190" y="186" text-anchor="middle" fill="#ffb020" font-family="JetBrains Mono, monospace" font-size="14" font-weight="700" letter-spacing="2" id="chip-label-b">CORTEX-A</text>
+                        <text x="190" y="206" text-anchor="middle" fill="#4ade80" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="1" id="chip-sub-b">&gt; exec bootrom</text>
+
+                        <!-- Corner LEDs -->
+                        <circle cx="101" cy="101" r="3" fill="#4ade80"><animate attributeName="opacity" values="0.2;1;0.2" dur="0.8s" repeatCount="indefinite"/></circle>
+                        <circle cx="279" cy="101" r="3" fill="#ffb020"><animate attributeName="opacity" values="0.2;1;0.2" dur="0.95s" repeatCount="indefinite"/></circle>
+                        <circle cx="101" cy="279" r="3" fill="#4ade80"><animate attributeName="opacity" values="0.2;1;0.2" dur="1.1s" repeatCount="indefinite"/></circle>
+                        <circle cx="279" cy="279" r="3" fill="#ffb020"><animate attributeName="opacity" values="0.2;1;0.2" dur="1.25s" repeatCount="indefinite"/></circle>
+
+                        <!-- Data bus lines with flowing packets -->
+                        <line x1="30" y1="190" x2="105" y2="190" stroke="#ffb020" stroke-width="1.2" opacity="0.4"/>
+                        <circle r="2.5" fill="#ffb020"><animateMotion dur="1.6s" repeatCount="indefinite" path="M 30 190 L 105 190"/></circle>
+                        <circle r="2.5" fill="#4ade80"><animateMotion dur="1.6s" begin="0.8s" repeatCount="indefinite" path="M 105 190 L 30 190"/></circle>
+
+                        <line x1="350" y1="190" x2="275" y2="190" stroke="#ffb020" stroke-width="1.2" opacity="0.4"/>
+                        <circle r="2.5" fill="#ffb020"><animateMotion dur="1.6s" repeatCount="indefinite" path="M 350 190 L 275 190"/></circle>
+                        <circle r="2.5" fill="#4ade80"><animateMotion dur="1.6s" begin="0.8s" repeatCount="indefinite" path="M 275 190 L 350 190"/></circle>
+
+                        <line x1="190" y1="30" x2="190" y2="105" stroke="#ffb020" stroke-width="1.2" opacity="0.4"/>
+                        <circle r="2.5" fill="#ffb020"><animateMotion dur="1.6s" repeatCount="indefinite" path="M 190 30 L 190 105"/></circle>
+                        <circle r="2.5" fill="#4ade80"><animateMotion dur="1.6s" begin="0.8s" repeatCount="indefinite" path="M 190 105 L 190 30"/></circle>
+
+                        <line x1="190" y1="350" x2="190" y2="275" stroke="#ffb020" stroke-width="1.2" opacity="0.4"/>
+                        <circle r="2.5" fill="#ffb020"><animateMotion dur="1.6s" repeatCount="indefinite" path="M 190 350 L 190 275"/></circle>
+                        <circle r="2.5" fill="#4ade80"><animateMotion dur="1.6s" begin="0.8s" repeatCount="indefinite" path="M 190 275 L 190 350"/></circle>
+
+                        <!-- Signal wave lines -->
+                        <path fill="none" stroke="url(#waveGrad)" stroke-width="1" opacity="0.5">
+                            <animate attributeName="d"
+                                values="M 20 270 Q 95 250 190 270 T 360 270;M 20 270 Q 95 290 190 270 T 360 270;M 20 270 Q 95 250 190 270 T 360 270"
+                                dur="2s" repeatCount="indefinite"/>
+                        </path>
+                        <path fill="none" stroke="url(#waveGrad)" stroke-width="1" opacity="0.35">
+                            <animate attributeName="d"
+                                values="M 20 282 Q 95 262 190 282 T 360 282;M 20 282 Q 95 302 190 282 T 360 282;M 20 282 Q 95 262 190 282 T 360 282"
+                                dur="2.5s" repeatCount="indefinite"/>
+                        </path>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Explore Card Deck Section -->
+        <section class="explore-section">
+            <div class="explore-title-row">
+                <!-- CPU icon -->
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-amber)" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="15" x2="4" y2="15"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="15" x2="23" y2="15"/></svg>
+                <span>// EXPLORE</span>
+                <span class="line-sep"></span>
+            </div>
+            <div class="explore-grid">
+                <!-- About -->
+                <a href="about.html" class="explore-card panel hover-trace">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
+                        <span class="card-num">01</span>
+                        <svg class="card-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    </div>
+                    <span class="card-title">About</span>
+                    <span class="card-desc">Who I am, education, learning.</span>
+                    <div class="card-enter-hint"><span>enter</span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+                </a>
+
+                <!-- Experience -->
+                <a href="experience.html" class="explore-card panel hover-trace">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
+                        <span class="card-num">02</span>
+                        <svg class="card-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                    </div>
+                    <span class="card-title">Experience</span>
+                    <span class="card-desc">ARM · AMI · BOSCH.</span>
+                    <div class="card-enter-hint"><span>enter</span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+                </a>
+
+                <!-- Skills -->
+                <a href="skills.html" class="explore-card panel hover-trace">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
+                        <span class="card-num">03</span>
+                        <svg class="card-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                    </div>
+                    <span class="card-title">Toolchain</span>
+                    <span class="card-desc">Languages, tools, protocols.</span>
+                    <div class="card-enter-hint"><span>enter</span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+                </a>
+
+                <!-- Projects -->
+                <a href="projects.html" class="explore-card panel hover-trace">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
+                        <span class="card-num">04</span>
+                        <svg class="card-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect></svg>
+                    </div>
+                    <span class="card-title">Projects</span>
+                    <span class="card-desc">RISC-V, FPGA, silicon.</span>
+                    <div class="card-enter-hint"><span>enter</span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+                </a>
+
+                <!-- Publications -->
+                <a href="publications.html" class="explore-card panel hover-trace">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
+                        <span class="card-num">05</span>
+                        <svg class="card-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    </div>
+                    <span class="card-title">Publications</span>
+                    <span class="card-desc">Taylor &amp; Francis paper.</span>
+                    <div class="card-enter-hint"><span>enter</span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+                </a>
+
+                <!-- Contact -->
+                <a href="contact.html" class="explore-card panel hover-trace">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
+                        <span class="card-num">06</span>
+                        <svg class="card-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    </div>
+                    <span class="card-title">Contact</span>
+                    <span class="card-desc">Ping the interrupt.</span>
+                    <div class="card-enter-hint"><span>enter</span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div>
+                <span class="footer-logo">abrar.sh_</span>
+                <p style="margin-top: 0.25rem;">Designed & built with bare-metal love.</p>
+            </div>
+            <div class="footer-status-group">
+                <span class="footer-status-badge">SYSTEM_OK</span>
+                <span>v1.0.0</span>
+                <p>&copy; 2026 Abrar Shaikh.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
+

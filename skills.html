@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Expertise | Abrar Shaikh</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+    <!-- Full-Screen Background -->
+    <canvas id="background-canvas"></canvas>
+    <div class="grid-overlay"></div>
+    <div class="pcb-grid-fine"></div>
+
+    <!-- Status Bar -->
+    <div class="status-bar">
+        <div class="status-left">
+            <span class="pulse-led green"></span>
+            <span>SYSTEM STATUS: RUNNING (CORE_VERIFY_OK)</span>
+        </div>
+        <div class="status-right">
+            <span>ARM_ARCH_CORTEX_V10A: ACTIVE</span>
+        </div>
+    </div>
+
+    <!-- Pinned Side Panels (GitHub / LinkedIn / Email) -->
+    <div class="social-side-panel left">
+        <a href="https://github.com/AbrarShaikh" target="_blank" rel="noopener noreferrer" title="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/abrar-shaikh-m/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </a>
+        <a href="mailto:abraratjob@gmail.com" title="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        </a>
+        <div class="vertical-line"></div>
+    </div>
+    <div class="social-side-panel right">
+        <a href="mailto:abraratjob@gmail.com" class="vertical-text">abraratjob@gmail.com</a>
+        <div class="vertical-line"></div>
+    </div>
+
+    <!-- Sticky Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon-wrap">
+                    <svg class="logo-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--accent-gold);">
+                        <rect x="5" y="5" width="14" height="14" rx="2"></rect>
+                        <path d="M9 9h6v6H9z"></path>
+                        <path d="M9 1v4M15 1v4M9 19v4M15 19v4M20 9h3M20 15h3M1 9h3M1 15h3"></path>
+                    </svg>
+                </span>
+                <span>abrar.sh<span class="underscore-blink">_</span></span>
+            </a>
+            
+            <nav class="nav-links">
+                <a href="about.html"><span class="nav-num">1</span> ABOUT</a>
+                <a href="experience.html"><span class="nav-num">2</span> EXPERIENCE</a>
+                <a href="skills.html" class="active"><span class="nav-num">3</span> SKILLS</a>
+                <a href="projects.html"><span class="nav-num">4</span> PROJECTS</a>
+                <a href="publications.html"><span class="nav-num">5</span> PUBLICATIONS</a>
+                <a href="contact.html"><span class="nav-num">6</span> CONTACT</a>
+                <div class="nav-status">
+                    <span class="pulse-led green" style="width:6px; height:6px;"></span>
+                    <span style="font-weight:600; color: #ffffff;">ONLINE</span>
+                </div>
+                <span class="nav-clock" id="nav-clock">00:00:00 IST</span>
+            </nav>
+
+            <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer">
+        <nav class="mobile-nav-links">
+            <a href="about.html"><span class="nav-num">1</span> ABOUT</a>
+            <a href="experience.html"><span class="nav-num">2</span> EXPERIENCE</a>
+            <a href="skills.html" class="active"><span class="nav-num">3</span> SKILLS</a>
+            <a href="projects.html"><span class="nav-num">4</span> PROJECTS</a>
+            <a href="publications.html"><span class="nav-num">5</span> PUBLICATIONS</a>
+            <a href="contact.html"><span class="nav-num">6</span> CONTACT</a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container section-padding">
+        <!-- Back Link -->
+        <div class="back-link-container">
+            <a href="index.html" class="back-link">
+                <!-- Arrow Left SVG -->
+                <svg class="back-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                <span>/ back to root</span>
+            </a>
+        </div>
+
+        <div class="page-header">
+            <span class="page-tag">/etc/capabilities</span>
+            <h1 class="page-title">Toolchain <span class="page-title-sub" style="font-size: 1.1rem; color: var(--text-secondary); display: block; font-weight: normal; margin-top: 0.25rem;">(Languages, protocols, and instruments I reach for)</span></h1>
+        </div>
+
+        <!-- Filters -->
+        <div class="skill-filters">
+            <button class="filter-btn active" data-filter="all">All Skills</button>
+            <button class="filter-btn" data-filter="languages">Programming & RTL</button>
+            <button class="filter-btn" data-filter="protocols">Protocols & Standards</button>
+            <button class="filter-btn" data-filter="hardware">Tools & Instrumentation</button>
+        </div>
+
+        <!-- Skills Grid -->
+        <div class="skills-grid">
+            <!-- Programming & RTL -->
+            <div class="skill-card" data-category="languages">
+                <div class="skill-card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                </div>
+                <h3>Programming & RTL</h3>
+                <div class="skill-tags">
+                    <span class="skill-badge highlight-glow">Embedded C</span>
+                    <span class="skill-badge highlight-glow">C++</span>
+                    <span class="skill-badge">ARM Assembly (ASM)</span>
+                    <span class="skill-badge">Verilog HDL</span>
+                    <span class="skill-badge">Python</span>
+                    <span class="skill-badge">Perl / tcsh</span>
+                </div>
+            </div>
+
+            <!-- Protocols -->
+            <div class="skill-card" data-category="protocols">
+                <div class="skill-card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                </div>
+                <h3>Automotive & Low-Level Protocols</h3>
+                <div class="skill-tags">
+                    <span class="skill-badge highlight-glow">CAN Bus</span>
+                    <span class="skill-badge">UDS (ISO 14229)</span>
+                    <span class="skill-badge">XCP Protocol</span>
+                    <span class="skill-badge">SPI</span>
+                    <span class="skill-badge">UART</span>
+                    <span class="skill-badge">ADC</span>
+                    <span class="skill-badge">AutoSAR BSW (MCAL, CDD)</span>
+                </div>
+            </div>
+
+            <!-- Standards -->
+            <div class="skill-card" data-category="protocols">
+                <div class="skill-card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </div>
+                <h3>Standards & Compliance</h3>
+                <div class="skill-tags">
+                    <span class="skill-badge highlight-glow">MISRA-C Compliance</span>
+                    <span class="skill-badge">QAC Static Analysis</span>
+                    <span class="skill-badge">ASPICE Compliance</span>
+                    <span class="skill-badge">SDLC Methodology</span>
+                    <span class="skill-badge">V-Model Verification</span>
+                </div>
+            </div>
+
+            <!-- Tools -->
+            <div class="skill-card" data-category="hardware">
+                <div class="skill-card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline></svg>
+                </div>
+                <h3>Toolchains & IDEs</h3>
+                <div class="skill-tags">
+                    <span class="skill-badge highlight-glow">Armclang compiler</span>
+                    <span class="skill-badge">Eclipse & IAR IDEs</span>
+                    <span class="skill-badge">Yocto OS Build</span>
+                    <span class="skill-badge">Xilinx Vivado</span>
+                    <span class="skill-badge">Yosys Synthesis</span>
+                    <span class="skill-badge">GTKWave Simulator</span>
+                    <span class="skill-badge">Doors-DNG / ALM / JIRA</span>
+                </div>
+            </div>
+
+            <!-- Debugging -->
+            <div class="skill-card" data-category="hardware">
+                <div class="skill-card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </div>
+                <h3>Hardware Instrumentation</h3>
+                <div class="skill-tags">
+                    <span class="skill-badge highlight-glow">ARM TARMAC Trace</span>
+                    <span class="skill-badge">BDM Debuggers</span>
+                    <span class="skill-badge">Picoscope Analyzer</span>
+                    <span class="skill-badge">Logic Analyzer</span>
+                    <span class="skill-badge">CANoe / CANalyzer</span>
+                    <span class="skill-badge">CANstress tool</span>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            <div class="skill-card" data-category="languages">
+                <div class="skill-card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path></svg>
+                </div>
+                <h3>Courses & Training</h3>
+                <div class="skill-tags">
+                    <span class="skill-badge">Embedded Linux Yocto (Udemy)</span>
+                    <span class="skill-badge">MATLAB Simulink (MathWorks)</span>
+                    <span class="skill-badge">Unix Essential Training (LinkedIn)</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div>
+                <span class="footer-logo">abrar.sh_</span>
+                <p style="margin-top: 0.25rem;">Designed & built with bare-metal love.</p>
+            </div>
+            <div class="footer-status-group">
+                <span class="footer-status-badge">SYSTEM_OK</span>
+                <span>v1.0.0</span>
+                <p>&copy; 2026 Abrar Shaikh.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
+
+
+

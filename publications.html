@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Publications | Abrar Shaikh</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+    <!-- Full-Screen Background -->
+    <canvas id="background-canvas"></canvas>
+    <div class="grid-overlay"></div>
+    <div class="pcb-grid-fine"></div>
+
+    <!-- Status Bar -->
+    <div class="status-bar">
+        <div class="status-left">
+            <span class="pulse-led green"></span>
+            <span>SYSTEM STATUS: RUNNING (CORE_VERIFY_OK)</span>
+        </div>
+        <div class="status-right">
+            <span>ARM_ARCH_CORTEX_V10A: ACTIVE</span>
+        </div>
+    </div>
+
+    <!-- Pinned Side Panels (GitHub / LinkedIn / Email) -->
+    <div class="social-side-panel left">
+        <a href="https://github.com/AbrarShaikh" target="_blank" rel="noopener noreferrer" title="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/abrar-shaikh-m/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </a>
+        <a href="mailto:abraratjob@gmail.com" title="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        </a>
+        <div class="vertical-line"></div>
+    </div>
+    <div class="social-side-panel right">
+        <a href="mailto:abraratjob@gmail.com" class="vertical-text">abraratjob@gmail.com</a>
+        <div class="vertical-line"></div>
+    </div>
+
+    <!-- Sticky Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon-wrap">
+                    <svg class="logo-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--accent-gold);">
+                        <rect x="5" y="5" width="14" height="14" rx="2"></rect>
+                        <path d="M9 9h6v6H9z"></path>
+                        <path d="M9 1v4M15 1v4M9 19v4M15 19v4M20 9h3M20 15h3M1 9h3M1 15h3"></path>
+                    </svg>
+                </span>
+                <span>abrar.sh<span class="underscore-blink">_</span></span>
+            </a>
+            
+            <nav class="nav-links">
+                <a href="about.html"><span class="nav-num">1</span> ABOUT</a>
+                <a href="experience.html"><span class="nav-num">2</span> EXPERIENCE</a>
+                <a href="skills.html"><span class="nav-num">3</span> SKILLS</a>
+                <a href="projects.html"><span class="nav-num">4</span> PROJECTS</a>
+                <a href="publications.html" class="active"><span class="nav-num">5</span> PUBLICATIONS</a>
+                <a href="contact.html"><span class="nav-num">6</span> CONTACT</a>
+                <div class="nav-status">
+                    <span class="pulse-led green" style="width:6px; height:6px;"></span>
+                    <span style="font-weight:600; color: #ffffff;">ONLINE</span>
+                </div>
+                <span class="nav-clock" id="nav-clock">00:00:00 IST</span>
+            </nav>
+
+            <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer">
+        <nav class="mobile-nav-links">
+            <a href="about.html"><span class="nav-num">1</span> ABOUT</a>
+            <a href="experience.html"><span class="nav-num">2</span> EXPERIENCE</a>
+            <a href="skills.html"><span class="nav-num">3</span> SKILLS</a>
+            <a href="projects.html"><span class="nav-num">4</span> PROJECTS</a>
+            <a href="publications.html" class="active"><span class="nav-num">5</span> PUBLICATIONS</a>
+            <a href="contact.html"><span class="nav-num">6</span> CONTACT</a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container section-padding">
+        <!-- Back Link -->
+        <div class="back-link-container">
+            <a href="index.html" class="back-link">
+                <svg class="back-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                <span>/ back to root</span>
+            </a>
+        </div>
+
+        <div class="page-header">
+            <span class="page-tag">/home/publications</span>
+            <h1 class="page-title">Publications</h1>
+        </div>
+
+        <div class="entries-list">
+            <!-- Publication 1 -->
+            <div class="entry-card">
+                <div class="entry-left">
+                    <span class="entry-label">PAPER_01 &nbsp;·&nbsp; 2019 &nbsp;·&nbsp; Co-Researcher</span>
+                    <h2 class="entry-title">Integrated Fuzzy-COPRAS Methodology for Multi-Criteria Decision Making</h2>
+                    <p class="entry-desc" style="margin-top:0.5rem;">Published in <a href="https://www.tandfonline.com/doi/full/10.1080/17509653.2020.1772895" target="_blank" rel="noopener noreferrer" class="journal-link">Taylor & Francis</a></p>
+                </div>
+                <div class="entry-right">
+                    <div class="entry-stat-number">2019</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div>
+                <span class="footer-logo">abrar.sh_</span>
+                <p style="margin-top: 0.25rem;">Designed & built with bare-metal love.</p>
+            </div>
+            <div class="footer-status-group">
+                <span class="footer-status-badge">SYSTEM_OK</span>
+                <span>v1.0.0</span>
+                <p>&copy; 2026 Abrar Shaikh.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
+
+
+

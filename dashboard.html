@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hardware Dashboard | Abrar Shaikh</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+    <!-- Full-Screen Background -->
+    <canvas id="background-canvas"></canvas>
+    <div class="grid-overlay"></div>
+    <div class="pcb-grid-fine"></div>
+
+    <!-- Status Bar -->
+    <div class="status-bar">
+        <div class="status-left">
+            <span class="pulse-led green"></span>
+            <span>SYSTEM STATUS: RUNNING (CORE_VERIFY_OK)</span>
+        </div>
+        <div class="status-right">
+            <span>ARM_ARCH_CORTEX_V10A: ACTIVE</span>
+        </div>
+    </div>
+
+    <!-- Sticky Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon-wrap">
+                    <svg class="logo-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--accent-gold);">
+                        <rect x="5" y="5" width="14" height="14" rx="2"></rect>
+                        <path d="M9 9h6v6H9z"></path>
+                        <path d="M9 1v4M15 1v4M9 19v4M15 19v4M20 9h3M20 15h3M1 9h3M1 15h3"></path>
+                    </svg>
+                </span>
+                <span>abrar.sh<span class="underscore-blink">_</span></span>
+            </a>
+            
+            <nav class="nav-links">
+                <a href="index.html"><span class="nav-num">1</span> ABOUT</a>
+                <a href="experience.html"><span class="nav-num">2</span> EXPERIENCE</a>
+                <a href="skills.html"><span class="nav-num">3</span> SKILLS</a>
+                <a href="projects.html"><span class="nav-num">4</span> PROJECTS</a>
+                <a href="publications.html"><span class="nav-num">5</span> PUBLICATIONS</a>
+                <a href="contact.html"><span class="nav-num">6</span> CONTACT</a>
+                <div class="nav-status">
+                    <span class="pulse-led green" style="width:6px; height:6px;"></span>
+                    <span style="font-weight:600; color: #ffffff;">ONLINE</span>
+                </div>
+                <span class="nav-clock" id="nav-clock">00:00:00 IST</span>
+            </nav>
+
+            <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer">
+        <nav class="mobile-nav-links">
+            <a href="index.html"><span class="nav-num">1</span> ABOUT</a>
+            <a href="experience.html"><span class="nav-num">2</span> EXPERIENCE</a>
+            <a href="skills.html"><span class="nav-num">3</span> SKILLS</a>
+            <a href="projects.html"><span class="nav-num">4</span> PROJECTS</a>
+            <a href="publications.html"><span class="nav-num">5</span> PUBLICATIONS</a>
+            <a href="contact.html"><span class="nav-num">6</span> CONTACT</a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container section-padding">
+        <div class="page-header">
+            <span class="page-tag">/dev/oscilloscope</span>
+            <h1 class="page-title">Hardware Verification Dashboard</h1>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Oscilloscope Screen Card -->
+            <div class="oscilloscope-card">
+                <div class="scope-header">
+                    <div class="scope-status">
+                        <span class="pulse-led green"></span>
+                        <span class="scope-status-text">CHANNEL 1: ACTIVE [5.00V/div]</span>
+                    </div>
+                    <span class="scope-freq-display" id="freq-readout">F: 50.00 Hz</span>
+                </div>
+                
+                <!-- Canvas -->
+                <div class="canvas-container">
+                    <canvas id="oscilloscope-canvas"></canvas>
+                </div>
+
+                <div class="scope-footer">
+                    <span>T: 2.00 ms/div</span>
+                    <span>TRIG: AUTO [LEVEL: 0V]</span>
+                </div>
+            </div>
+
+            <!-- Controls sidebar -->
+            <div class="dashboard-sidebar">
+                <!-- Waveform Controls -->
+                <div class="control-panel">
+                    <h3>Signal Visualizer Settings</h3>
+                    
+                    <div class="control-group">
+                        <label for="wave-select">Signal Waveform</label>
+                        <select id="wave-select" class="scope-select">
+                            <option value="sine">Sinusoidal Wave (Clock)</option>
+                            <option value="square">Square Wave (PWM / UART Rx)</option>
+                            <option value="triangle">Triangular Wave (ADC Input)</option>
+                            <option value="noisy">Noisy Signal (EMI interference)</option>
+                        </select>
+                    </div>
+
+                    <div class="control-row">
+                        <div class="control-group">
+                            <label for="freq-slider">Frequency (Hz)</label>
+                            <input type="range" id="freq-slider" min="10" max="100" value="50" class="scope-slider">
+                        </div>
+                        <div class="control-group">
+                            <label for="amp-slider">Amplitude (V)</label>
+                            <input type="range" id="amp-slider" min="1" max="10" value="5" class="scope-slider">
+                        </div>
+                    </div>
+
+                    <div class="control-actions">
+                        <button id="noise-toggle" class="btn btn-secondary btn-small">Toggle EMI Noise</button>
+                        <button id="freeze-toggle" class="btn btn-secondary btn-small">Hold Sweep</button>
+                    </div>
+                </div>
+
+                <!-- Real-time Registers Simulation -->
+                <div class="register-panel">
+                    <div class="register-header">
+                        <h3>Cortex-A Core Registers</h3>
+                        <span class="register-state">RUNNING</span>
+                    </div>
+                    <div class="register-grid">
+                        <div class="reg-item">
+                            <span class="reg-name">R0 (Arg 1)</span>
+                            <span class="reg-val" id="reg-r0">0x00000000</span>
+                        </div>
+                        <div class="reg-item">
+                            <span class="reg-name">R1 (Arg 2)</span>
+                            <span class="reg-val" id="reg-r1">0x000045A1</span>
+                        </div>
+                        <div class="reg-item">
+                            <span class="reg-name">SP (Stack Pt)</span>
+                            <span class="reg-val" id="reg-sp">0x3FFFFE20</span>
+                        </div>
+                        <div class="reg-item">
+                            <span class="reg-name">LR (Link Reg)</span>
+                            <span class="reg-val" id="reg-lr">0x00008F4C</span>
+                        </div>
+                        <div class="reg-item">
+                            <span class="reg-name">PC (Program)</span>
+                            <span class="reg-val" id="reg-pc">0x00009A12</span>
+                        </div>
+                        <div class="reg-item">
+                            <span class="reg-name">CPSR (Flags)</span>
+                            <span class="reg-val" id="reg-cpsr">0x60000013</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div>
+                <span class="footer-logo">abrar.sh_</span>
+                <p style="margin-top: 0.25rem;">Bare-metal embedded systems engineering. Verifying low-level architectures.</p>
+            </div>
+            <div>
+                <p>&copy; 2026 Abrar Shaikh. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
+
+
+

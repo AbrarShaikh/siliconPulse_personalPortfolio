@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Experience | Abrar Shaikh</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+    <!-- Full-Screen Background -->
+    <canvas id="background-canvas"></canvas>
+    <div class="grid-overlay"></div>
+    <div class="pcb-grid-fine"></div>
+
+    <!-- Status Bar -->
+    <div class="status-bar">
+        <div class="status-left">
+            <span class="pulse-led green"></span>
+            <span>SYSTEM STATUS: RUNNING (CORE_VERIFY_OK)</span>
+        </div>
+        <div class="status-right">
+            <span>ARM_ARCH_CORTEX_V10A: ACTIVE</span>
+        </div>
+    </div>
+
+    <!-- Pinned Side Panels (GitHub / LinkedIn / Email) -->
+    <div class="social-side-panel left">
+        <a href="https://github.com/AbrarShaikh" target="_blank" rel="noopener noreferrer" title="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/abrar-shaikh-m/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </a>
+        <a href="mailto:abraratjob@gmail.com" title="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        </a>
+        <div class="vertical-line"></div>
+    </div>
+    <div class="social-side-panel right">
+        <a href="mailto:abraratjob@gmail.com" class="vertical-text">abraratjob@gmail.com</a>
+        <div class="vertical-line"></div>
+    </div>
+
+    <!-- Sticky Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon-wrap">
+                    <svg class="logo-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--accent-gold);">
+                        <rect x="5" y="5" width="14" height="14" rx="2"></rect>
+                        <path d="M9 9h6v6H9z"></path>
+                        <path d="M9 1v4M15 1v4M9 19v4M15 19v4M20 9h3M20 15h3M1 9h3M1 15h3"></path>
+                    </svg>
+                </span>
+                <span>abrar.sh<span class="underscore-blink">_</span></span>
+            </a>
+            
+            <nav class="nav-links">
+                <a href="about.html"><span class="nav-num">1</span> ABOUT</a>
+                <a href="experience.html" class="active"><span class="nav-num">2</span> EXPERIENCE</a>
+                <a href="skills.html"><span class="nav-num">3</span> SKILLS</a>
+                <a href="projects.html"><span class="nav-num">4</span> PROJECTS</a>
+                <a href="publications.html"><span class="nav-num">5</span> PUBLICATIONS</a>
+                <a href="contact.html"><span class="nav-num">6</span> CONTACT</a>
+                <div class="nav-status">
+                    <span class="pulse-led green" style="width:6px; height:6px;"></span>
+                    <span style="font-weight:600; color: #ffffff;">ONLINE</span>
+                </div>
+                <span class="nav-clock" id="nav-clock">00:00:00 IST</span>
+            </nav>
+
+            <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer">
+        <nav class="mobile-nav-links">
+            <a href="about.html"><span class="nav-num">1</span> ABOUT</a>
+            <a href="experience.html" class="active"><span class="nav-num">2</span> EXPERIENCE</a>
+            <a href="skills.html"><span class="nav-num">3</span> SKILLS</a>
+            <a href="projects.html"><span class="nav-num">4</span> PROJECTS</a>
+            <a href="publications.html"><span class="nav-num">5</span> PUBLICATIONS</a>
+            <a href="contact.html"><span class="nav-num">6</span> CONTACT</a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container section-padding">
+        <!-- Back Link -->
+        <div class="back-link-container">
+            <a href="index.html" class="back-link">
+                <!-- Arrow Left SVG -->
+                <svg class="back-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                <span>/ back to root</span>
+            </a>
+        </div>
+
+        <div class="page-header">
+            <span class="page-tag">/log/history</span>
+            <h1 class="page-title">Experience <span class="page-title-sub" style="font-size: 1.1rem; color: var(--text-secondary); display: block; font-weight: normal; margin-top: 0.25rem;">(Where I've written code that shipped)</span></h1>
+        </div>
+
+        <!-- Tabbed Experience Layout -->
+        <div class="experience-layout">
+            <!-- Left Tab Buttons -->
+            <div class="exp-tabs-list" id="exp-tabs">
+                <button class="exp-tab-btn active" data-company="arm">ARM</button>
+                <button class="exp-tab-btn" data-company="ami">American Megatrends</button>
+                <button class="exp-tab-btn" data-company="bosch">BOSCH BGSW</button>
+                <button class="exp-tab-btn" data-company="research">Academic Research</button>
+            </div>
+
+            <!-- Right Details Panel -->
+            <div class="exp-details-panel">
+                <!-- ARM Details -->
+                <div class="exp-details-content active" id="exp-details-arm">
+                    <div class="timeline-header">
+                        <div>
+                            <h3 class="timeline-role">Embedded Software Engineer <span class="timeline-company">@ ARM</span></h3>
+                            <span class="timeline-loc">📍 Bangalore, IN</span>
+                        </div>
+                        <span class="timeline-date">Oct 2024 — Present</span>
+                    </div>
+                    <ul class="timeline-bullets">
+                        <li>Contributing to HAL (Hardware Abstraction Layer) software & infrastructure for Cortex-A v10a & v9a architecture verification.</li>
+                        <li>Achieved ~78% runtime optimization for Bring-Up tests in RTL simulation environments.</li>
+                        <li>Delivered 75% compile-time optimization of the Test Library build flow.</li>
+                        <li>Maintain BOOT code, low-level drivers, and Test Abstraction APIs used by verification suites.</li>
+                        <li>Optimized boot code — saved ~8 KB in the final ELF footprint.</li>
+                        <li>Deep debugging using ARM TARMAC Trace, disassembly analysis, and ELF inspection.</li>
+                    </ul>
+                    <div class="exp-stack">
+                        <span class="exp-stack-label">// stack</span>
+                        <div class="exp-stack-tags">
+                            <span class="entry-tag">ARM Cortex-A</span>
+                            <span class="entry-tag">ARM ASM</span>
+                            <span class="entry-tag">Armclang</span>
+                            <span class="entry-tag">TARMAC Trace</span>
+                            <span class="entry-tag">Perl</span>
+                            <span class="entry-tag">tcsh</span>
+                            <span class="entry-tag">RTL Sim</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AMI Details -->
+                <div class="exp-details-content" id="exp-details-ami">
+                    <div class="timeline-header">
+                        <div>
+                            <h3 class="timeline-role">Senior Software Engineer <span class="timeline-company">@ American Megatrends (AMI)</span></h3>
+                            <span class="timeline-loc">📍 Remote</span>
+                        </div>
+                        <span class="timeline-date">Jul 2024 — Sep 2024</span>
+                    </div>
+                    <ul class="timeline-bullets">
+                        <li>Worked on ARM Cortex-M based embedded Linux systems with Yocto BSP.</li>
+                        <li>Contributed to firmware infrastructure and build system tooling.</li>
+                        <li>Version-controlled with Git; task-tracked via JIRA in an agile cadence.</li>
+                    </ul>
+                    <div class="exp-stack">
+                        <span class="exp-stack-label">// stack</span>
+                        <div class="exp-stack-tags">
+                            <span class="entry-tag">ARM Cortex-M</span>
+                            <span class="entry-tag">Embedded Linux</span>
+                            <span class="entry-tag">Yocto BSP</span>
+                            <span class="entry-tag">Git</span>
+                            <span class="entry-tag">JIRA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BOSCH Details -->
+                <div class="exp-details-content" id="exp-details-bosch">
+                    <div class="timeline-header">
+                        <div>
+                            <h3 class="timeline-role">Software Engineer <span class="timeline-company">@ BOSCH BGSW</span></h3>
+                            <span class="timeline-loc">📍 Bangalore, IN</span>
+                        </div>
+                        <span class="timeline-date">Sep 2021 — May 2024</span>
+                    </div>
+                    <ul class="timeline-bullets">
+                        <li>Owned embedded application SW for Exhaust-gas NOx measurement with Sensor Controller Unit (NXP S12Z 16-bit MCU).</li>
+                        <li>Developed End-of-Line (EOL) production software and BSW layers — MCAL and CDD.</li>
+                        <li>Enforced MISRA-C compliance using QAC static analyser; contributed to V-model stages under ASPICE.</li>
+                        <li>Performed HIL testing, verification and validation using XCP and UDS protocols.</li>
+                        <li>Automated 100+ hours of manual test effort through CAPL / CANoe test frameworks.</li>
+                    </ul>
+                    <div class="exp-stack">
+                        <span class="exp-stack-label">// stack</span>
+                        <div class="exp-stack-tags">
+                            <span class="entry-tag">NXP S12Z MCU</span>
+                            <span class="entry-tag">MISRA-C</span>
+                            <span class="entry-tag">QAC</span>
+                            <span class="entry-tag">ASPICE</span>
+                            <span class="entry-tag">HIL Testing</span>
+                            <span class="entry-tag">XCP</span>
+                            <span class="entry-tag">UDS</span>
+                            <span class="entry-tag">CAPL</span>
+                            <span class="entry-tag">CANoe</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Research Details -->
+                <div class="exp-details-content" id="exp-details-research">
+                    <div class="timeline-header">
+                        <div>
+                            <h3 class="timeline-role">Academic Researcher <span class="timeline-company">@ Sikkim Manipal Institute of Technology</span></h3>
+                            <span class="timeline-loc">📍 Sikkim, IN</span>
+                        </div>
+                        <span class="timeline-date">Jan 2021 — Jun 2021</span>
+                    </div>
+                    <ul class="timeline-bullets">
+                        <li>Research on Advanced Optimization Techniques — Integrated Fuzzy-COPRAS methodology for multi-criteria decision-making algorithms.</li>
+                        <li>Publication: Taylor & Francis.</li>
+                    </ul>
+                    <div class="exp-stack">
+                        <span class="exp-stack-label">// stack</span>
+                        <div class="exp-stack-tags">
+                            <span class="entry-tag">Fuzzy-COPRAS</span>
+                            <span class="entry-tag">Mathematics</span>
+                            <span class="entry-tag">Decision Support</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div>
+                <span class="footer-logo">abrar.sh_</span>
+                <p style="margin-top: 0.25rem;">Designed & built with bare-metal love.</p>
+            </div>
+            <div class="footer-status-group">
+                <span class="footer-status-badge">SYSTEM_OK</span>
+                <span>v1.0.0</span>
+                <p>&copy; 2026 Abrar Shaikh.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
+
+
+
