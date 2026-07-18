@@ -2,6 +2,10 @@
 
 > Personal portfolio website for **Abrar Shaikh** — Embedded Software Engineer
 
+[![View Live](https://img.shields.io/badge/View_Live-GitHub_Pages-blue?style=for-the-badge&logo=github)](https://abrarshaikh.github.io/siliconPulse_personalPortfolio/)
+
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/AbrarShaikh/siliconPulse_personalPortfolio)
+
 A semiconductor-themed dark portfolio with animated chip visualizer, terminal aesthetics, and golden amber accents.
 
 ---
