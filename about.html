@@ -100,6 +100,7 @@
             <a href="index.html" class="back-link">
                 <!-- Arrow Left SVG -->
                 <svg class="back-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                <svg class="back-home-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"></path></svg>
                 <span>/ back to root</span>
             </a>
         </div>
@@ -110,55 +111,80 @@
         </div>
 
         <!-- Terminal Bio -->
-        <div class="terminal-panel">
-            <div class="terminal-header">
-                <div class="terminal-buttons">
+        <section class="terminal-panel about-terminal" aria-label="Abrar's firmware engineering summary">
+            <div class="terminal-header about-terminal-header">
+                <span class="terminal-context"><span class="terminal-shell-prompt" aria-hidden="true">&gt;_</span> ~/whoami</span>
+                <div class="terminal-buttons" aria-hidden="true">
                     <span class="terminal-btn close"></span>
                     <span class="terminal-btn minimize"></span>
                     <span class="terminal-btn expand"></span>
                 </div>
-                <span class="terminal-title">bash</span>
             </div>
-            <div class="terminal-body">
+            <div class="terminal-body about-terminal-body">
                 <div class="terminal-line prompt">
                     <span class="usr">abrar</span>@<span class="host">firmware-pc</span>:<span class="dir">~</span>$ cat /proc/abrar/summary
                 </div>
-                <div class="terminal-line output">
+                <div class="terminal-line output about-terminal-lead">
                     I write firmware that runs where reliability isn't optional — from silicon bring-up at ARM to production ECUs at BOSCH. I care about cycles, bytes, and the last microampere.
                 </div>
+                <div class="about-terminal-copy">
+                    <p>
+                        I’ve spent the last 4.7+ years working close to the metal — writing Embedded C for 16-bit automotive MCUs at <strong>BOSCH</strong> (NXP S12Z, AutoSAR MCAL/CDD, UDS/XCP), and now shipping HAL &amp; bring-up infrastructure for <strong>Arm Cortex-A</strong> cores during silicon verification. Along the way I’ve fallen deep into optimization — from shaving 8 KB off a boot image to cutting 78% of RTL-sim runtime.
+                    </p>
+                    <p>
+                        Outside the day job I explore hardware-software co-design — I’ve synthesized a RISC-V keypad driver down to SkyWater 130nm cells, and built a 2D convolution engine on FPGA for image processing. Silicon and software feel like the same problem to me.
+                    </p>
+                </div>
+                <div class="about-terminal-status" aria-label="Profile details">
+                    <span class="about-status-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"></circle><path d="M12 22s7-5.1 7-12a7 7 0 1 0-14 0c0 6.9 7 12 7 12z"></path></svg>
+                        Mumbai, IN
+                    </span>
+                    <span class="about-status-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a4 4 0 0 1 8 0v2"></path></svg>
+                        4.7+ years
+                    </span>
+                    <span class="about-availability"><span></span> Open to opportunities</span>
+                </div>
             </div>
-        </div>
+        </section>
 
         <!-- Grid for Education and Continued Learning -->
         <div class="about-grid">
             <!-- Education -->
             <div class="about-card">
-                <h3 class="about-card-title">// Education</h3>
+                <h3 class="about-card-title">
+                    <svg class="about-card-heading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3"></circle><path d="M7 21v-2a5 5 0 0 1 10 0v2"></path><path d="M5 3h14"></path></svg>
+                    <span>Education</span>
+                </h3>
                 <div class="about-card-body">
                     <div class="edu-item">
                         <div class="edu-degree">B.Tech — Electrical & Electronic Engineering</div>
                         <div class="edu-university">Manipal University</div>
-                        <div class="edu-meta">2017 — 2021 · CGPA 8.1 / 10</div>
+                        <div class="edu-meta"><span>2017 — 2021</span><span class="edu-score">CGPA 8.1 / 10</span></div>
                     </div>
                 </div>
             </div>
 
             <!-- Continued Learning -->
             <div class="about-card">
-                <h3 class="about-card-title">// Continued Learning</h3>
+                <h3 class="about-card-title">
+                    <svg class="about-card-heading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 8 4-8 4-8-4 8-4Z"></path><path d="m4 12 8 4 8-4"></path><path d="m4 17 8 4 8-4"></path></svg>
+                    <span>Continued Learning</span>
+                </h3>
                 <div class="about-card-body">
                     <ul class="learning-list">
                         <li>
                             <span class="list-bullet">→</span>
-                            <span class="list-text"><strong>Embedded Linux</strong> — Yocto (Udemy)</span>
+                            <span class="list-text"><strong>Embedded Linux — Yocto</strong><small>Udemy</small></span>
                         </li>
                         <li>
                             <span class="list-bullet">→</span>
-                            <span class="list-text"><strong>MATLAB Simulink</strong> (MathWorks)</span>
+                            <span class="list-text"><strong>MATLAB Simulink</strong><small>MathWorks</small></span>
                         </li>
                         <li>
                             <span class="list-bullet">→</span>
-                            <span class="list-text"><strong>Unix Essential Training</strong> (LinkedIn Learning)</span>
+                            <span class="list-text"><strong>Unix Essential Training</strong><small>LinkedIn Learning</small></span>
                         </li>
                     </ul>
                 </div>
@@ -170,7 +196,17 @@
     <footer class="site-footer">
         <div class="container footer-container">
             <div>
-                <span class="footer-logo">abrar.sh_</span>
+                <div class="footer-brand">
+                    <span class="footer-shell-mark" aria-hidden="true">
+                        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path class="shell-frame" d="M5 5h22v22H5z"></path>
+                            <path class="shell-prompt" d="m10 12 4 4-4 4"></path>
+                            <path class="shell-cursor" d="M17 20h5"></path>
+                            <circle class="shell-signal" cx="25" cy="7" r="1.5"></circle>
+                        </svg>
+                    </span>
+                    <span class="footer-logo">abrar.sh_</span>
+                </div>
                 <p style="margin-top: 0.25rem;">Designed & built with bare-metal love.</p>
             </div>
             <div class="footer-status-group">
@@ -185,6 +221,3 @@
     <script src="app.js"></script>
 </body>
 </html>
-
-
-

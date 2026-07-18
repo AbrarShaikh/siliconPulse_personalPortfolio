@@ -136,7 +136,7 @@ function initBackgroundAnimation() {
         buildNetwork();
     });
 
-    const GRID   = 50;       // snap-to grid (matches pcb-grid CSS)
+    const GRID   = 40;
     const COLS   = Math.ceil(W / GRID) + 1;
     const ROWS   = Math.ceil(H / GRID) + 1;
 
@@ -340,68 +340,7 @@ function initChipVisualizer() {
     const pinLength = 35;
     
     let pulses = [];
-    let chipMode = 'A'; // 'A' or 'B'
-
-    const toggleContainer = document.getElementById('cpu-toggle');
-    const logsBox = document.getElementById('live-logs-box');
-    const descText = document.getElementById('cpu-desc');
-
-    if (toggleContainer) {
-        const buttons = toggleContainer.querySelectorAll('.btn-cpu-toggle');
-        const wrapA = document.getElementById('chip-wrap-a');
-        const wrapB = document.getElementById('chip-wrap-b');
-
-        buttons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                buttons.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                chipMode = btn.getAttribute('data-mode');
-                if (chipMode === 'A') {
-                    if (logsBox) logsBox.classList.remove('active');
-                    if (descText) descText.textContent = 'STATIC + PINS';
-                    if (wrapA) wrapA.style.display = '';
-                    if (wrapB) wrapB.style.display = 'none';
-                } else {
-                    if (logsBox) logsBox.classList.add('active');
-                    if (descText) descText.textContent = 'ORBITS + PULSE';
-                    if (wrapA) wrapA.style.display = 'none';
-                    if (wrapB) wrapB.style.display = '';
-                }
-            });
-        });
-    }
-
-    // Simulated log stream for Option B
-    const logMessages = [
-        { text: '[OK] CLK: 12.00 MHz', type: 'ok' },
-        { text: '[OK] REG: SP:0x1FFD', type: 'ok' },
-        { text: '[OK] BUS: ADDR:0x4002', type: 'ok' },
-        { text: '[OK] INTR: IRQ_LEVEL_3', type: 'ok' },
-        { text: '[OK] ALU: ADD_RESULT_0x00FF', type: 'ok' },
-        { text: '[OK] MEM: WRITE_SUCCESS_0x3FFF', type: 'ok' },
-        { text: '[OK] UART: RX_BUFFER_CLEARED', type: 'ok' },
-        { text: '[OK] DMA: CHANNEL_0_COMPLETE', type: 'ok' },
-        { text: '[WARN] EMI: NOISE_THRESHOLD_8%', type: 'warn' },
-        { text: '[OK] SYS: HEALTH_CHECK_PASS', type: 'ok' }
-    ];
-
-    function addSimulatedLog() {
-        if (chipMode !== 'B' || !logsBox) return;
-
-        const log = logMessages[Math.floor(Math.random() * logMessages.length)];
-        const line = document.createElement('div');
-        line.className = `log-line ${log.type}`;
-        line.textContent = log.text;
-
-        logsBox.appendChild(line);
-        logsBox.scrollTop = logsBox.scrollHeight;
-
-        while (logsBox.childElementCount > 4) {
-            logsBox.removeChild(logsBox.firstChild);
-        }
-    }
-    setInterval(addSimulatedLog, 800);
+    const chipMode = 'A';
     
     class PinPulse {
         constructor(side, index, pinX, pinY, dx, dy, length) {
@@ -843,6 +782,9 @@ function initContactConsole() {
 
         const payloadString = `NAME:${name};EMAIL:${email};MSG:${message};`;
         const payloadBytes = new TextEncoder().encode(payloadString).length;
+        const mailtoSubject = encodeURIComponent(`Portfolio enquiry from ${name}`);
+        const mailtoBody = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+        const mailtoUrl = `mailto:abraratjob@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
 
         const cursorLine = monitor.querySelector('.cursor-line');
         if (cursorLine) cursorLine.remove();
@@ -857,7 +799,7 @@ function initContactConsole() {
             { text: `[TX_DATA] PAYLOAD: ${message.slice(0, 60)}${message.length > 60 ? '...' : ''}`, type: "tx-data" },
             { text: `[TX_DATA] END_OF_FRAME (0x7D) | PACKET_SIZE: ${payloadBytes} Bytes`, type: "tx-data" },
             { text: `[SYSTEM] Stream transmitted. Waiting for Receiver ACK...`, type: "system" },
-            { text: `[SYSTEM] ACK frame received (0x06). Message saved successfully!`, type: "system" },
+            { text: `[SYSTEM] Email draft is ready. Opening your mail app...`, type: "system" },
             { text: `rx_buffer_waiting...`, type: "cursor" }
         ];
 
@@ -888,7 +830,34 @@ function initContactConsole() {
             } else {
                 txBytesTotal = payloadBytes;
                 txBytesSpan.textContent = txBytesTotal;
-                form.reset();
+                window.location.href = mailtoUrl;
+                // Fallback: if no mail client, show copyable email + message
+                const composedBody = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+                setTimeout(() => {
+                    const fallback = document.createElement('div');
+                    fallback.className = 'monitor-line system';
+                    fallback.style.whiteSpace = 'pre-wrap';
+                    fallback.innerHTML =
+                        `Mail client didn't open? Copy and send manually:\n` +
+                        `<span style="color:var(--accent-amber)">To:</span> abraratjob@gmail.com\n` +
+                        `<span style="color:var(--accent-amber)">Subject:</span> Portfolio enquiry from ${name}\n` +
+                        `<span style="color:var(--accent-amber)">Message:</span>\n` +
+                        `<span style="color:var(--accent-green)">${composedBody}</span>`;
+                    monitor.appendChild(fallback);
+
+                    const copyBtn = document.createElement('button');
+                    copyBtn.textContent = '📋 Copy to clipboard';
+                    copyBtn.style.cssText = 'margin-top:0.5rem;background:transparent;border:1px solid var(--accent-gold);color:var(--accent-gold);font-family:var(--font-mono);font-size:0.65rem;padding:0.3rem 0.6rem;border-radius:3px;cursor:pointer;';
+                    copyBtn.addEventListener('click', () => {
+                        const fullText = `To: abraratjob@gmail.com\nSubject: Portfolio enquiry from ${name}\n\n${composedBody}`;
+                        navigator.clipboard.writeText(fullText).then(() => {
+                            copyBtn.textContent = '✓ Copied';
+                            setTimeout(() => { copyBtn.textContent = '📋 Copy to clipboard'; }, 2000);
+                        });
+                    });
+                    monitor.appendChild(copyBtn);
+                    monitor.scrollTop = monitor.scrollHeight;
+                }, 1500);
             }
         }
 
